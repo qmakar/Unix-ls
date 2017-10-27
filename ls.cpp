@@ -14,9 +14,9 @@ using namespace std;
 #define X64 0x8664
 
 
-std::string operator*(std::string s, size_t count)
+string operator*(string s, size_t count)
 {
-  std::string ret;
+  string ret;
   for(size_t i = 0; i < count; ++i)
   {
     ret = ret + s;
@@ -65,11 +65,11 @@ void DirectoryEnumeration(const char * dir_name, int count)
       closedir(path);
       return;
     }
-    std::stringstream ss;
+    stringstream ss;
     ss << dir_name <<"/"<< directoryStruct->d_name;
-    const std::string s = ss.str();
+    const string s = ss.str();
     const char* str = s.c_str();
-    std::string space(" ");
+    string space(" ");
     cout << space*count << directoryStruct->d_name;
     a = checkDirectory(directoryStruct->d_name, str);
     if(a == 1)
@@ -83,7 +83,6 @@ void DirectoryEnumeration(const char * dir_name, int count)
     } else
     {
       FILE * file;
-      std::string space(" ");
       if ((file = fopen(str, "r")) == NULL){
         cout << "cant"<<endl;
         continue;
